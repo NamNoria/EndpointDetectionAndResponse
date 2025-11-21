@@ -1,0 +1,6 @@
+framework module EDR {
+    umbrella header "CThreatDetect.h"
+
+    export *
+    module * { export * }
+}

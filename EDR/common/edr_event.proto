@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+message EdrRiskEvent {
+  string des = 1;
+  bytes procinfo = 2;
+  int32 eventid = 3;
+  bytes eventinfo = 4;
+  int32 action = 5;
+  repeated bytes procinfos = 6;
+  string agentip = 7;
+  string hostname = 8;
+}
+
+message EdrEventMessage
+{
+  message SubMessage{
+    int32 eventtype = 1;
+    int32 times = 2;
+    bytes eventinfo = 3;
+  }
+  repeated SubMessage msg = 1;
+}
+
+message ProcessStart{
+  int32 UtcTime = 1;
+  int32 ProcessId = 2;
+  string ImagePath = 3;
+  string Hash = 4;
+  string Company = 5;
+  string Product = 6;
+  string OriginalFile = 7;
+  string User = 8;
+  string SID = 9;
+  string CommandLine = 10;
+  string CurrentDirectory = 11;
+  int32 TerminalSessionId = 12;
+  string Signer = 13;
+  string ProcessGuid = 14;
+  string ParentProcessGuid = 15;
+  string ProcFileId = 16;
+  string SignerName = 17;
+  int32  Integrity = 18;
+  int32  CreateTime = 19;
+  int32  FileSize = 20;
+  int32  SignStatus = 21;
+  string fileguid = 22;
+  int32  StartType = 23;
+}
+
+message NetConEvent{
+  int32 UtcTime = 1;
+  string ProcessGuid = 2;
+  int32 Protocol = 3;
+  fixed32 SourceIp = 4;
+  fixed32 SourcePort = 5;
+  fixed32 DestinationIp = 6;
+  fixed32 DestinationPort = 7;
+}
+
+message CreateFileEvent{
+  int32 UtcTime = 1;
+  string ProcessGuid = 2;
+  string FileName = 3;
+  int32 CreateTime = 4;
+  int32 CreateOptions = 5;
+  int32 DesiredAccess = 6;
+  string FileID = 7;
+  int32  FileSize = 8;
+  int32  SignStatus = 9;
+  string FileHash = 10;
+  string Signer = 11;
+  string SignerName=12;
+  string CompanyName = 13;
+  string OriginalFile = 14;
+  string ProductName = 15;
+}
+
+message ReNameFileEvent{
+  int32 UtcTime = 1;
+  string ProcessGuid = 2;
+  string OldPath = 3;
+  string NewPath = 4;
+  string FileSigner = 5;
+  string FileID = 6;
+}
+
